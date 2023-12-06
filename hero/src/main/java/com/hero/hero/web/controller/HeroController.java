@@ -31,7 +31,7 @@ public class HeroController {
 
 
     @Operation(summary = "Récupère une liste de personnages")
-    @GetMapping("/HeroAll")
+    @GetMapping("/heroall")
     public List<Hero> allHeroes() {
         return heroDao.findAll();
     }
@@ -45,19 +45,19 @@ public class HeroController {
                     content = @Content),
             @ApiResponse(responseCode = "404", description = "Personnage non accessible",
                     content = @Content)})
-    @GetMapping("/Hero/{id}")
+    @GetMapping("/hero/{id}")
     public Optional<Hero> displayHero(@Validated @PathVariable int id) {
         return heroDao.findById(id);
     }
 
     @Operation(summary = "Ajoute un personnage")
-    @PostMapping("/HeroSave")
+    @PostMapping("/herosave")
     public Hero addHero(@Validated @RequestBody Hero heroes) {
         return heroDao.save(heroes);
     }
 
     @Operation(summary = "Modifie un personnage selon son id")
-    @PutMapping("/HeroModify/{id}")
+    @PutMapping("/heromodify/{id}")
     public ResponseEntity<Hero> modifyHero(@Validated @PathVariable int id, @RequestBody Hero hero) {
         Hero updateHero = heroDao.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Le héros n'existe pas sous cet ID" + id));
@@ -70,7 +70,7 @@ public class HeroController {
     }
 
     @Operation(summary = "Supprime un personnage selon son id")
-    @DeleteMapping("/HeroDelete/{id}")
+    @DeleteMapping("/herodelete/{id}")
     public void supprimerUnPersonnage(@Validated @PathVariable int id) {
         heroDao.deleteById(id);
     }
