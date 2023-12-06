@@ -14,7 +14,12 @@ public class MenuController {
     }
 
     @GetMapping("/start")
-    public String start() {
+    public String start(Model model) {
+        model.addAttribute("start-game-title", "Voici votre héros :");
+        Case response = restTemplate.getForObject("172.22.114.58:8081/hero", Case.class);
+
+        model.addAttribute("hero", response);
+
         return "start";
     }
 

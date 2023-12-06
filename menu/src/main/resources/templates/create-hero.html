@@ -7,7 +7,7 @@
 <!--          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
 </head>
 <body style="width: 100%">
-<!--<h1 style="padding: 3rem 5rem" class='display-1' th:text="${create-hero-message}"/>-->
+<!--<h1 style="padding: 5rem 5rem" class='display-1' th:text="${create-hero-message}"/>-->
 <div class="mb-3 " style="margin: auto; width: 500px; border:solid 1px; padding: 2rem; border-radius: 15px ;display: flex; justify-content: center; align-items: center">
     <form style=" display: flex; justify-content: center; align-items: center ;flex-direction: column; "
           role="form"
@@ -15,20 +15,20 @@
           th:action="@{/menu}"
           th:object="${fillHero}">
 
-        <label  class="form-label">Nom</label>
+        <label  class="form-label"><strong>Nom</strong></label>
         <input class="form-control" type="text" name="nom" th:field = "*{name}"/>
         <br/>
-        <label class="form-label">Type</label>
+        <label class="form-label"><strong>Type</strong></label>
         <input class="form-control"type="text" name="type" th:field = "*{type}"/>
         <br/>
-        <label class="form-label">Force d'attaque</label>
+        <label class="form-label"><strong>Force d'attaque</strong></label>
         <input class="form-control" type="text" name="force_attaque" th:field = "*{strength}"/>
         <br/>
-        <label class="form-label">Points de vie</label>
+        <label class="form-label"><strong>Points de vie</strong></label>
         <input class="form-control" type="text" name="point_de_vie" th:field = "*{life}"/>
         <br/>
 
-        <button class="btn btn-primary" type="submit"  style="">Créer</button>
+        <button class="btn btn-primary" type="submit"  style=""><strong>Créer</strong></button>
     </form>
 </div>
 
