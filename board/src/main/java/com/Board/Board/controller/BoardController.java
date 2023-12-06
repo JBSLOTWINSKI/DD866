@@ -25,56 +25,32 @@ public class BoardController {
         this.boardDao = boardDao;
     }
 
-    @PostMapping(value ="/board")
-    private ResponseEntity<Board> addOneCase(@Valid @RequestBody Board board) {
-        Board boardCaseAdded = boardDao.save(board);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/id")
-                .buildAndExpand(boardCaseAdded.getId())
-                .toUri();
-        return ResponseEntity.created(location).body(boardCaseAdded);
-    }
-
-    @PostMapping(value = "/add-new-board/{n}")
-    public void addNewBoard(@PathVariable("n") int n) {
-        for (int i = 1; i < n; i++) {
+    @PostMapping(value = "/board")
+    public void addNewBoard() {
+        for (int i = 1; i < 11; i++) {
             Board objEmp = new Board();
-            objEmp.setIdGame(200);
+            objEmp.setIdGame(100);
             objEmp.setCaseNum(i);
             objEmp.setIdHero(0);
             objEmp.setIdEnemy(0);
             objEmp.setIdEquipment(0);
-            objEmp.setIdPotion(0);
-
-            String uri = "http://localhost:8085/board";
-            RestTemplate restTemplate = new RestTemplate();
-            restTemplate.postForObject(uri, objEmp, Board.class);
-
+            if (objEmp.getCaseNum()==2){
+                objEmp.setIdPotion(1);
+            } else {
+                objEmp.setIdPotion(0);
+            }
+            boardDao.save(objEmp);
         }
     }
-    @PutMapping("/update-board/{id}")
-    private ResponseEntity<Board> updateBoard(@PathVariable int id,@RequestBody Board board) {
-        Board updateBoard = boardDao.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Board not exist with id: " + id));
-        updateBoard.setIdPotion(board.getIdPotion());
-        updateBoard.setIdPotion(board.getIdEnemy());
-        updateBoard.setIdPotion(board.getIdEquipment());
-        boardDao.save(updateBoard);
-        return ResponseEntity.ok(updateBoard);
-    }
-
-//    @PutMapping(value = "/current-board/{idGame}")
-//    public ResponseEntity<Board> modifyBoard(@PathVariable int idGame){
-//        List<Board> board = boardDao.findByIpGame(idGame);
-//
-//    }
-
-
 
     @GetMapping(value = "/current-board/{idGame}")
     private List<Board> GetGame(@PathVariable int idGame) {
         return boardDao.findByIpGame(idGame);
+    }
+
+    @GetMapping(value = "/current-case/foo")
+    private Board GetCase(@RequestParam int caseNum){
+        return boardDao.findCase(caseNum);
     }
 
     @DeleteMapping("/current-board/{idGame}")

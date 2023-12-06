@@ -11,10 +11,9 @@ import java.util.Optional;
 
 @Repository
 public interface BoardDao extends JpaRepository<Board, Integer> {
-
     @Query("SELECT t FROM Board t WHERE t.idGame=?1")
-    List<Board> findByIpGame(int i);
+    List<Board> findByIpGame(int iGame);
 
-    @Query("DELETE FROM Board t WHERE t.idGame=?1")
-    List<Board> deleteByIpGame(int i);
+    @Query("SELECT t FROM Board t WHERE  t.caseNum=?1")
+    Board findCase(int caseNum);
 }

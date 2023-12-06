@@ -9,12 +9,13 @@
 </head>
 <body th:bgcolor="EAEDED">
 <div class="display-group"
-     style="flex-direction: column; margin: 4rem auto; width: 650px; border:solid 1px; border-radius: 20px ; display: flex; justify-content: center; align-items: center">
+     style="flex-direction: column; margin: 5rem auto; width: 900px; border:solid 1px; border-radius: 30px ; display: flex; justify-content: center; align-items: center">
     <h1 style="margin-top: 2rem" th:text="${title}"></h1>
     <p class="resume" style="color:darkred; text-align:center">
         Bienvenue ! <br>
         Commencez à jouer dès maintenant, bon chance.
     </p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaeE4QjZcMiy0ovDRSi-ihufwENF886mLLPA&usqp=CAU">
         <a style="margin: 1rem 0" class="btn btn-large btn-warning" th:href="@{/start}">Jouer</a>
         <a style="margin: 1rem 0" class="btn btn-large btn-warning" th:href="@{/create-hero}">Créer un héros</a>
         <a style="margin: 1rem 0" class="btn btn-large btn-warning" th:href="@{/display-heroes}">Afficher vos héros</a>
