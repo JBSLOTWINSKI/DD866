@@ -11,31 +11,31 @@ public class MenuController {
     @GetMapping("/menu")
     void displayMenu(Model model) {
         model.addAttribute("title", "Donjons & Dragons");
-//        return "menu";
+    }
+
+    @GetMapping("/start")
+    public String start() {
+        return "start";
     }
 
     @GetMapping("/create-hero")
     public String createHero(Model model) {
-        model.addAttribute("createhero", "Créer votre héros");
+        model.addAttribute("create-hero", "Créer votre héros");
         return "createHero";
     }
 
     @GetMapping("/display-heroes")
     public String displayHeroes(Model model) {
-        model.addAttribute("displayhero", "Votre liste de héros");
+        model.addAttribute("display-hero", "Votre liste de héros");
         return "displayHeroes";
     }
 
-    @GetMapping("/choose-your-hero")
+    @GetMapping("/created-heroes")
     public String chooseHero(Model model) {
-        model.addAttribute("choosehero", "Veuillez choisir un héro");
+        model.addAttribute("choose-hero", "Veuillez choisir un héro");
         return "chooseHero";
     }
 
-    @GetMapping("/play")
-    public String play() {
-        return "play";
-    }
 
     @GetMapping("/quit")
     public String quit() {
