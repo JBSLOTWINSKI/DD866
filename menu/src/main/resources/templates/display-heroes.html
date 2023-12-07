@@ -2,26 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Liste de vos héros</title>
+    <title>Liste héros</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<h1 class='display-1' th:text="${display-heroes-list}"/>
+<h1 class='display-heroes'> Liste de vos héros<h1/>
 <table class="table table-success">
     <thead>
     <tr>
         <th scope="col">name</th>
         <th scope="col">type</th>
-        <th scope="col">strength</th>
         <th scope="col">life</th>
+        <th scope="col">strength</th>
     </tr>
     </thead>
-    <tr th:each="hero: ${/heroes-list}">
+    <tr th:each="hero: ${display-heroes}">
         <td th:text="${hero.name}"></td>
         <td th:text="${hero.type}"></td>
-        <td th:text="${hero.strength}"></td>
         <td th:text="${hero.life}"></td>
+        <td th:text="${hero.strength}"></td>
     </tr>
 
 </table>
