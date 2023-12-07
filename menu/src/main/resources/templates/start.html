@@ -8,12 +8,12 @@
 </head>
 <body>
 <div class="mb-3 "
-     style=" flex-direction: column; margin: 5rem auto; width: 900px; border:solid 1px; border-radius: 30px ;display: flex; justify-content: center; align-items: center">
-    <h1 style="margin-top: 2rem" th:text="${start-game-title}">
+     style=" flex-direction: column; margin: 5rem auto; width: 900px;display: flex; justify-content: center; align-items: center">
+    <h1 style="margin-top: 2rem" th:text="${start-game}">
     <p th:text="'Nom : '+${hero.nom}"/>
     <p th:text="'Classe : '+${hero.type}"/>
-    <p th:text="'PV : '+${hero.point_de_vie}"/>
-    <p th:text="'Strength : '+${hero.force_attaque}"/>
+    <p th:text="'Strength : '+${hero.strength}"/>
+    <p th:text="'PV : '+${hero.life}"/>
     <a style="margin: 2rem 0" class="btn btn-large btn-danger" th:href="@{game}">Commencer la partie</a>
 </div>
 
